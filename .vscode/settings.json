@@ -1,0 +1,9 @@
+{
+    
+    "terminal.integrated.profiles.windows": {
+        "gitBash": {
+            "path": "D:\hp\git\Git\git-bash.exe",//这里是的的bash路径
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "gitBash"
+}
