@@ -30,6 +30,6 @@ export const CenterWrapper = styled.div`
             border-radius: 50%;
             color: #fff;
             background-color: ${props => props.theme.color.primaryColor};
-        }
+        } 
     }
 `
