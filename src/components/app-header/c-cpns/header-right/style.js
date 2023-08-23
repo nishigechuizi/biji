@@ -44,7 +44,7 @@ export const RightWrapper = styled.div`
         /* transition: box-shadow 0.2s case;
         &:hover {
             box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-        } */
+        }   */
         ${props => props.theme.mixin.boxShadow}
     }
 `
