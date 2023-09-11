@@ -9,6 +9,7 @@ import theme from "./assets/theme"
 
 import "normalize.css"
 import "./assets/css/index.less"
+import "antd/dist/antd"
 import { ThemeProvider } from 'styled-components';
 
 // @ => src: webpack

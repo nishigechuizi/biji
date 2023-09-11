@@ -5,6 +5,8 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home.js'
 import SectionHeader from '@/components/section-header/index.jsx'
 import RoomItem from '@/components/room-item/index.jsx'
+// import {Button} from '@mui/material';
+import { Button } from 'antd';
 
 const Home = memo(() => {
   /**redux中获取数据 */
@@ -34,6 +36,9 @@ const Home = memo(() => {
           </ul>  
         </div>       
       </div>
+      
+      {/* <Button variant="text">Text</Button> */}
+      <Button type="primary">Primary Button</Button>
     </HomeWrapper>
   )
 })
