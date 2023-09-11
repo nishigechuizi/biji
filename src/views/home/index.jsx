@@ -4,9 +4,9 @@ import HomeBanner from './c-cpns/home-banner/index.jsx'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home.js'
 import SectionHeader from '@/components/section-header/index.jsx'
-import RoomItem from '@/components/room-item/index.jsx'
+import SectionRooms from '@/components/section-rooms/index.jsx'
 // import {Button} from '@mui/material';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 
 const Home = memo(() => {
   /**redux中获取数据 */
@@ -26,19 +26,11 @@ const Home = memo(() => {
       <div className='content'>
         <div className='good-price'>
           <SectionHeader title={goodPriceInfo.title}></SectionHeader>
-            <ul className='room-list'>
-            
-              {
-                goodPriceInfo.list?.slice(0,8).map(item => {
-                return <RoomItem itemData={item} key={item.id}></RoomItem>
-              })
-              }
-          </ul>  
+          <SectionRooms roomList={goodPriceInfo}></SectionRooms>  
         </div>       
       </div>
       
       {/* <Button variant="text">Text</Button> */}
-      <Button type="primary">Primary Button</Button>
     </HomeWrapper>
   )
 })

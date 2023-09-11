@@ -46,4 +46,21 @@ export const ItemWrapper = styled.div`
     .price {
         margin: 8px 0;
     }
+
+    .bottom{
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 600;
+
+        .MuiRating-icon{
+            margin-right: -1px;
+        }
+        .count{
+            margin: 0 2px 0 4px;
+        }
+        .MuiRating-decimal {
+            margin-right: -3px;
+        }
+    }
 `
