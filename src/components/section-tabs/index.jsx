@@ -4,11 +4,12 @@ import { TabsWrapper } from "./style"
 import classNames from 'classnames'
 
 const SectionTabs = memo((props) => {
-    const {tabNames=[]} = props
-    const [ currentIndex,setCurrentIndex ] = useState(0)
+    const {tabNames=[],tabClick} = props
+    const [  currentIndex,setCurrentIndex ] = useState(0)
 
-  function itemClickHandle(index){
+  function itemClickHandle(index,item){
     setCurrentIndex(index)
+    tabClick(index,item)
   }
 
   return ( 
@@ -19,7 +20,7 @@ const SectionTabs = memo((props) => {
               <div
                 key={index} 
                 className={classNames("item",{active:index === currentIndex})}
-                onClick={e=>itemClickHandle(index)}>
+                onClick={e=>itemClickHandle(index,item)}>
                 {item}
               </div>
             )
