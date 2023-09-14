@@ -4,6 +4,7 @@ import {SectionV2Wrapper} from "./style"
 import SectionHeader from '@/components/section-header/index.jsx'
 import SectionRooms from '@/components/section-rooms/index.jsx'
 import SectionTabs from '@/components/section-tabs/index.jsx'
+import SectionFooter from '@/components/section-footer'
 const HomeSectionV2 = memo((props) => {
     const {infoData} = props 
   /**数据转换 */
@@ -21,6 +22,7 @@ const HomeSectionV2 = memo((props) => {
         <SectionHeader title={infoData.title} subtitle={infoData.subtitle} ></SectionHeader>
         <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}></SectionTabs>
         <SectionRooms roomList={infoData.dest_list?.[name]} itemWidth="33.33%"></SectionRooms>
+        <SectionFooter name={name}></SectionFooter>
     </SectionV2Wrapper>
   )
 })
