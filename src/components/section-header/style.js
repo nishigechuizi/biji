@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const HeaderWrapper = styled.div`
     color: #222;
-
+    margin-top: 10px;
     .title {
         font-size: 22px;
         font-weight: 700;

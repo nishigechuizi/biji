@@ -8,8 +8,8 @@ import store from "./store"
 import theme from "./assets/theme"
 
 import "normalize.css"
-import "./assets/css/index.less"
 import "antd/dist/antd"
+import "./assets/css/index.less" 
 import { ThemeProvider } from 'styled-components';
 
 // @ => src: webpack
