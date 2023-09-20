@@ -1,7 +1,7 @@
 import * as actionTypes from "./constants"
 
 const initialState = {
-    currentPage:1, //当前页面
+    currentPage:0, //当前页面
     roomList:[],   //房间列表
     totalCount:0   //总数据个数 
 }
