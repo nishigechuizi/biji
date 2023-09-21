@@ -39,7 +39,7 @@ const ScrollView = memo((props) => {
     const newIndex =isRight ? posIndex + 1 :posIndex-1
     const newEl = scrollContentRef.current.children[newIndex]
     //就是当前元素到最初始位置的距离 即为offsetLeft
-    console.log(newEl,newEl.offsetLeft);
+    // console.log(newEl,newEl.offsetLeft);
     const newOffsetLeft = newEl.offsetLeft
     scrollContentRef.current.style.transform = `translate(-${newOffsetLeft}px)`
     setPosIndex(newIndex)

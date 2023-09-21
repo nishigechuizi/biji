@@ -7,7 +7,7 @@ const initialState = {
 }
 
 function reducer(state = initialState,action){
-    console.log(action);
+    // console.log(action);
     switch(action.type){
         case actionTypes.CHANGE_CURRENT_PAGE:
             return {...state,currentPage:action.currentPage}
