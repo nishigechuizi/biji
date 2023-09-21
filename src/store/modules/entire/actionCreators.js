@@ -15,6 +15,10 @@ export const changeTotalCountAction = (totalCount) => ({
     totalCount
 })
 
+export const changeIsLoadingAction = (isLoading) => ({
+    type:actionTypes.CHANGE_IS_LOADING,
+    isLoading
+})
 
 export const fetchRoomListAction = (page = 0) => {
 
@@ -25,7 +29,9 @@ export const fetchRoomListAction = (page = 0) => {
         dispatch(changeCurrentPageAction(page))
         //1.根据页码获取更新的数据
         // const currentPage = getState().entire.currentPage
+        dispatch(changeIsLoadingAction(true))
         const res = await getEntireRoomList(page*20)
+        dispatch(changeIsLoadingAction(false))
 
         //2.获取最新的数据 保存redux的store中
         const roomList = res.list

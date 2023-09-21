@@ -3,7 +3,9 @@ import * as actionTypes from "./constants"
 const initialState = {
     currentPage:0, //当前页面
     roomList:[],   //房间列表
-    totalCount:0   //总数据个数 
+    totalCount:0,   //总数据个数
+    
+    isLoading:false //蒙版
 }
 
 function reducer(state = initialState,action){
@@ -15,6 +17,8 @@ function reducer(state = initialState,action){
             return {...state,roomList:action.roomList}
         case actionTypes.CHANGE_TOTAL_COUNT:
             return {...state,totalCount:action.totalCount}
+        case actionTypes.CHANGE_IS_LOADING:
+            return {...state,isLoading:action.isLoading}
         default:
             return state
     }

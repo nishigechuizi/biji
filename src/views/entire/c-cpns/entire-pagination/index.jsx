@@ -2,14 +2,14 @@
 import React, { memo } from 'react'
 import {PaginationWrapper} from "./style"
 import { Pagination } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import {  fetchRoomListAction } from '@/store/modules/entire/actionCreators'
 const EntirePagination = memo((props) => {
   const {totalCount,currentPage,roomList} = useSelector((state)=>({
     totalCount: state.entire.totalCount,
     currentPage:state.entire.currentPage,
     roomList:state.entire.roomList
-  }))
+  }),shallowEqual)
 
   const totalPage = Math.ceil(totalCount/20)  //向上取整
   const startCount = currentPage*20+1
@@ -18,6 +18,8 @@ const EntirePagination = memo((props) => {
   /**事件处理逻辑 */
   const dispatch = useDispatch()
   function pageChangeHandle(event,pageCount){
+    //回到顶部
+    window.scrollTo(0,0)
     //获取最新的页码：redux => currentpage
     // dispatch(changeCurrentPageAction(pageCount-1))
     dispatch(fetchRoomListAction(pageCount-1))
