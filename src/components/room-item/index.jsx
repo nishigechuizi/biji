@@ -1,19 +1,30 @@
 import PropTypes from 'prop-types'
-import React, { memo, useRef } from 'react'
+import React, { memo, useRef,useState } from 'react'
 import {ItemWrapper} from "./style"
 import {Rating} from '@mui/material';
 //轮播图
 import { Carousel } from 'antd';
 import IconArrowLeft from '@/assets/svg/icon-arrow-left';
 import IconArrowRight from '@/assets/svg/icon-arrow-right';
+import Indicator from '@/base-ui/indicator';
+import classNames from 'classnames';
 
 const RoomItem = memo((props) => {
     const {itemData,itemWidth="25%"} = props
     const silderRef = useRef()
+    const [selectIndex,setSelectIndex] = useState(0)
+
     /**事件处理逻辑 */
     function controlClickHandle(isRight = true){
       // 上一个 下一个
       isRight ? silderRef.current.next() : silderRef.current.prev()
+
+      //最新的索引
+      let newIndex = isRight ? selectIndex +1 : selectIndex -1
+      const length = itemData.picture_urls.length
+      if(newIndex < 0)  newIndex = length-1
+      if(newIndex > length-1) newIndex =0
+      setSelectIndex(newIndex)
     }
   return (
     <ItemWrapper 
@@ -31,6 +42,19 @@ const RoomItem = memo((props) => {
             <div className='btn right' onClick={e => controlClickHandle(true)}>
               <IconArrowRight width="30" height="30" ></IconArrowRight>
             </div>
+          </div>
+          <div className='indicator'>
+            <Indicator selectIndex={selectIndex}>
+              {
+                itemData?.picture_urls?.map((item,index) => {
+                  return (
+                    <div className='item' key={item}>
+                      <span className={classNames('dot',{active:selectIndex === index})} ></span>
+                    </div>
+                  )
+                })
+              }
+            </Indicator>
           </div>
           <Carousel dots={false} ref={silderRef}>
             {
