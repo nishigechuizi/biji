@@ -15,6 +15,8 @@ const ScrollView = memo((props) => {
   useEffect(()=>{
     const scrollWidth = scrollContentRef.current.scrollWidth  //一共可以滚动的宽度
     const clientWidth = scrollContentRef.current.clientWidth  //本身的宽度
+    console.log("scrollWidth",scrollWidth);
+    console.log("clientWidth",clientWidth);
     const totalDistance = scrollWidth-clientWidth
     totalDistanceRef.current = totalDistance
     setShowRight(totalDistance>0)
