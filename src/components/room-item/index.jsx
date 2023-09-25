@@ -10,7 +10,7 @@ import Indicator from '@/base-ui/indicator';
 import classNames from 'classnames';
 
 const RoomItem = memo((props) => {
-    const {itemData,itemWidth="25%"} = props
+    const {itemData,itemWidth="25%",itemClick} = props
     const silderRef = useRef()
     const [selectIndex,setSelectIndex] = useState(0)
 
@@ -26,15 +26,15 @@ const RoomItem = memo((props) => {
       if(newIndex > length-1) newIndex =0
       setSelectIndex(newIndex)
     }
-  return (
-    <ItemWrapper 
-      $verifyColor={itemData?.verify_info?.text_color||"#39576a"}
-      itemWidth={itemWidth}>
-      <div className='inner'>
-        {/* <div className='cover'>
+
+    const pictureElement = (
+      <div className='cover'>
           <img src={itemData.picture_url} alt=''></img>
-        </div> */}
-        <div className='slider'>
+      </div>
+    )
+
+    const sliderElment = (
+      <div className='slider'>
           <div className='control'>
             <div className='btn left' onClick={e => controlClickHandle(false)}>
               <IconArrowLeft width="30" height="30" ></IconArrowLeft>
@@ -68,6 +68,18 @@ const RoomItem = memo((props) => {
             }
           </Carousel>
         </div>
+    )
+    
+    function itemClickHandle(){
+      if(itemClick) itemClick(itemData)
+    }
+  return (
+    <ItemWrapper 
+      $verifyColor={itemData?.verify_info?.text_color||"#39576a"}
+      itemWidth={itemWidth} onClick={itemClickHandle}>
+      <div className='inner'>
+        
+        {itemData.picture_urls ? sliderElment : pictureElement}
         <div className='desc'>
           {itemData.verify_info.messages.join(".")}
         </div>
