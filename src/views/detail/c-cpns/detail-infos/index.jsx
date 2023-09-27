@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
 const DetailInfos = memo((props) => {
