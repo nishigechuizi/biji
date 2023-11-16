@@ -6,11 +6,16 @@ import {BrowserWrapper} from "./style"
 import IconClose from '@/assets/svg/icon-close'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right'
+import IconTriangleArrowBottom from '@/assets/svg/icon-triangle-arrow-bottom'
+import Indicator from '../indicator'
+import classNames from 'classnames'
+import IconTriangleArrowTop from '@/assets/svg/icon-triangle-arrow-top'
 
 const PictureBrowser = memo((props) => {
   const {pictureUrls,closeClick} = props
   const [currentIndex,setcurrentIndex] = useState(0)
   const [isNext,setIsNext] = useState(true)
+  const [showList,setshowList] = useState(true)
 
   useEffect(()=> {
     document.body.style.overflow = "hidden"
@@ -34,8 +39,13 @@ const PictureBrowser = memo((props) => {
     setIsNext(isNext)
   }
 
+  function bottomItemClickHandle(index) {
+    setIsNext( index > currentIndex )
+    setcurrentIndex(index)
+  }
+
   return (
-    <BrowserWrapper isNext={isNext}>
+    <BrowserWrapper isNext={isNext} showList={showList}>
       <div className='top'>
         <div className='close-btn' onClick={closeBtnClickHandle}>
           <IconClose></IconClose>
@@ -63,7 +73,36 @@ const PictureBrowser = memo((props) => {
           </SwitchTransition>
         </div>
       </div>
-      <div className='preview'></div>
+      <div className='preview'>
+        <div className='info'>
+          <div className='desc'>
+            <div className='count'>
+              <span>{currentIndex+1}/{pictureUrls.length}:</span>
+              <span>room apartment图片{currentIndex+1}</span>
+            </div>
+            <div className='toggle' onClick={e => setshowList(!showList)}>
+              <span>{showList?"隐藏":"显示"}照片列表</span>
+              { showList ? <IconTriangleArrowBottom />:<IconTriangleArrowTop></IconTriangleArrowTop>}
+            </div>
+          </div>
+          <div className='list' >
+            <Indicator selectIndex={currentIndex}>
+              {
+                pictureUrls.map((item,index) => {
+                  return (
+                    <div 
+                      className={classNames("item",{active:currentIndex===index})} 
+                      key={item}
+                      onClick={e=> bottomItemClickHandle(index)}>
+                      <img src={item} alt=''></img>
+                    </div>
+                  )
+                })
+              }
+            </Indicator>
+          </div>
+        </div>
+      </div>
     </BrowserWrapper>
   )
 })

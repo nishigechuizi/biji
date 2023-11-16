@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import {EntireWrapper} from "./style"
+import {changeHeaderConfigAction} from '@/store/modules/main'
 import EntireFilter from './c-cpns/entire-filter'
 import EntireRooms from './c-cpns/entire-rooms'
 import EntirePagination from './c-cpns/entire-pagination'
@@ -10,6 +11,7 @@ const Entire = memo(() => {
   const dispatch = useDispatch()  
   useEffect(()=> {
     dispatch(fetchRoomListAction())
+    dispatch(changeHeaderConfigAction({isFixed:true,isHome:false}))
   },[dispatch])
 
   return (

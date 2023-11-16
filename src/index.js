@@ -19,15 +19,18 @@ import { ThemeProvider } from 'styled-components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Suspense fallback="loading">
+
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <HashRouter>
-            <App />
-          </HashRouter>
-        </ThemeProvider>
+        {/* //异步加载使用suspense，某些页面异步加载 */}
+        <Suspense fallback="loading">
+          <ThemeProvider theme={theme}>
+            <HashRouter> 
+              <App />
+            </HashRouter>
+          </ThemeProvider>
+        </Suspense>
       </Provider>
-    </Suspense>
+    
 );
 
   // <React.StrictMode> 
