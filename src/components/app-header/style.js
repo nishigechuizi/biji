@@ -2,9 +2,9 @@ import styled from "styled-components"
 
 export const HeaderWrapper = styled.div`
 
-    border-bottom: 1px solid #eee;
 
-    background-color: #fff;
+
+    /* background-color: #fff; */
     .left{
         color: skyblue;
     }
@@ -24,8 +24,12 @@ export const HeaderWrapper = styled.div`
     }
     .content {
         z-index: 19;
-        background-color: #fff;
+        background-color: ${props => props.theme.isAlpha ? "rgba(255,255,255,0)":"rgba(255,255,255,1)"};
         position: relative;
+        border-bottom: 1px solid #eee;
+        transition: all 250ms ease ;
+        border-bottom-color: ${props => props.theme.isAlpha ? "rgba(233,233,233,0)":"rgba(233,233,233,1)"};
+
         .top{
             display:flex;
             align-items:center;

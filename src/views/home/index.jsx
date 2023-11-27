@@ -9,7 +9,7 @@ import {isEmptyO} from "@/utils/index.js"
 import HomeSectionV2 from './home-section-v2/index.jsx'
 import HomeLongfor from './c-cpns/home-longfor/index.jsx'
 import HomeSectionV3 from './home-section-v3/index.jsx'
-import AppHeader from '@/components/app-header/index.jsx'
+// import AppHeader from '@/components/app-header/index.jsx'
 import { changeHeaderConfigAction } from '@/store/modules/main.js'
 // import {Button} from '@mui/material';
 // import { Button } from 'antd';
@@ -31,12 +31,12 @@ const Home = memo(() => {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(fetchHomeDataAction("xxxx")) 
-    dispatch(changeHeaderConfigAction({isFixed:true}))
+    dispatch(changeHeaderConfigAction({isFixed:true,topAlpha:true}))
   },[dispatch])
 
   return (
     <HomeWrapper>
-      <AppHeader></AppHeader>
+      {/* <AppHeader></AppHeader> */}
       <HomeBanner></HomeBanner>
       <div className='content'>
         {/* <div className='good-price'>
